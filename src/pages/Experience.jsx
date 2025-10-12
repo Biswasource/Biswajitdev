@@ -23,7 +23,6 @@ export default function Experience() {
       description: [
         "Worked on a Salon SaaS platform providing complete management solutions.",
         "Developed scalable RESTful APIs using Node.js and Express for salon operations.",
-        "Integrated Razorpay for secure payment processing.",
         "Containerized applications using Docker for easy deployment.",
         "Implemented CI/CD pipelines with Jenkins for automated builds and deployments.",
         "Managed databases including MongoDB and PostgreSQL, ensuring data integrity.",
@@ -39,10 +38,7 @@ export default function Experience() {
       description: [
         "Worked on multiple client projects, building responsive and interactive web applications.",
         "Implemented end-to-end solutions using MERN stack, integrating APIs and databases.",
-        "Handled UI/UX design and ensured seamless functionality across devices.",
         "Collaborated with clients to understand requirements and deliver custom solutions.",
-        "Built e-commerce platforms with online payment integration.",
-        "Created real-time chat applications with WebSocket and Firebase integration.",
         "Optimized websites for SEO and performance using Next.js and Tailwind CSS.",
         "Maintained code quality using ESLint and Prettier.",
       ],

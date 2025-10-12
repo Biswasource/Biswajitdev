@@ -23,7 +23,7 @@ export default function ProjectSection() {
         "Developed a comprehensive React UI component library that supports multiple themes, including dark, light, and custom variations.",
         "Implemented a flexible theming system with JSX & TSX support, allowing developers to import components seamlessly in any project.",
         "Created a CLI tool to add and scaffold components dynamically, improving development efficiency.",
-        "Optimized components for accessibility and responsive design to ensure usability across devices.",
+
         "Documented the library with examples and usage guides, making onboarding simple for new developers.",
       ],
       tags: [
@@ -36,8 +36,16 @@ export default function ProjectSection() {
         "Accessibility",
       ],
       links: [
-        { icon: <FaGithub />, url: "https://github.com/yourrepo/uivault", tooltip: "GitHub" },
-        { icon: <FaExternalLinkAlt />, url: "https://uivault.dev", tooltip: "Live Demo" },
+        {
+          icon: <FaGithub />,
+          url: "https://github.com/yourrepo/uivault",
+          tooltip: "GitHub",
+        },
+        {
+          icon: <FaExternalLinkAlt />,
+          url: "https://uivault.dev",
+          tooltip: "Live Demo",
+        },
       ],
     },
     {
@@ -47,8 +55,6 @@ export default function ProjectSection() {
       description: [
         "Built an AI-powered website builder that leverages GPT-based suggestions for layout, design, and content creation.",
         "Integrated real-time project deployment and version control to allow seamless updates and edits.",
-        "Implemented a drag-and-drop interface for users to create pages, sections, and components without coding.",
-        "Added multi-user collaboration support, enabling teams to work on projects simultaneously.",
         "Ensured secure backend architecture with MERN stack, including authentication, database management, and API endpoints.",
       ],
       tags: [
@@ -61,8 +67,16 @@ export default function ProjectSection() {
         "Real-time Deployment",
       ],
       links: [
-        { icon: <FaGithub />, url: "https://github.com/yourrepo/uivault", tooltip: "GitHub" },
-        { icon: <FaExternalLinkAlt />, url: "https://uivault.dev", tooltip: "Live Demo" },
+        {
+          icon: <FaGithub />,
+          url: "https://github.com/yourrepo/uivault",
+          tooltip: "GitHub",
+        },
+        {
+          icon: <FaExternalLinkAlt />,
+          url: "https://uivault.dev",
+          tooltip: "Live Demo",
+        },
       ],
     },
     {
@@ -73,7 +87,6 @@ export default function ProjectSection() {
         "Developed a full-featured code snippet manager for developers to save, organize, and share code efficiently.",
         "Implemented syntax highlighting, categorization, and tagging of snippets for quick retrieval.",
         "Created public and private sharing options with commenting and collaboration capabilities.",
-        "Added real-time editing and live preview for supported languages using a web-based editor.",
         "Optimized for performance with lazy loading and efficient database queries to handle large snippet collections.",
       ],
       tags: [
@@ -86,8 +99,16 @@ export default function ProjectSection() {
         "Collaboration",
       ],
       links: [
-        { icon: <FaGithub />, url: "https://github.com/yourrepo/uivault", tooltip: "GitHub" },
-        { icon: <FaExternalLinkAlt />, url: "https://uivault.dev", tooltip: "Live Demo" },
+        {
+          icon: <FaGithub />,
+          url: "https://github.com/yourrepo/uivault",
+          tooltip: "GitHub",
+        },
+        {
+          icon: <FaExternalLinkAlt />,
+          url: "https://uivault.dev",
+          tooltip: "Live Demo",
+        },
       ],
     },
     {
@@ -97,7 +118,6 @@ export default function ProjectSection() {
       description: [
         "Developed a reusable NPM package providing a structured MVC setup for Node.js projects.",
         "Streamlined project bootstrapping with pre-built controllers, models, and routing templates.",
-        "Integrated support for MongoDB and PostgreSQL to cater to different database requirements.",
         "Included built-in middleware templates for authentication, logging, and error handling.",
         "Simplified deployment and scaling of Node.js projects by enforcing best practices and project structure.",
       ],
@@ -111,8 +131,16 @@ export default function ProjectSection() {
         "Middleware",
       ],
       links: [
-        { icon: <FaGithub />, url: "https://github.com/yourrepo/uivault", tooltip: "GitHub" },
-        { icon: <FaExternalLinkAlt />, url: "https://uivault.dev", tooltip: "Live Demo" },
+        {
+          icon: <FaGithub />,
+          url: "https://github.com/yourrepo/uivault",
+          tooltip: "GitHub",
+        },
+        {
+          icon: <FaExternalLinkAlt />,
+          url: "https://uivault.dev",
+          tooltip: "Live Demo",
+        },
       ],
     },
   ];
@@ -131,9 +159,7 @@ export default function ProjectSection() {
   return (
     <div className="min-h-screen text-gray-900 px-6 relative mt-3">
       <div className="max-w-3xl w-full mx-auto mt-4 bg-white">
-        <h1 className="text-3xl font-bold border-gray-300 mt-5 cl">
-          Projects
-        </h1>
+        <h1 className="text-3xl font-bold border-gray-300 mt-5 cl">Projects</h1>
 
         {projects.map((proj, idx) => {
           const isExpanded = expandedIdxs.includes(idx);
@@ -160,7 +186,9 @@ export default function ProjectSection() {
                       alt={proj.name}
                     />
                     <div>
-                      <h2 className="text-[17.5px] font-bold cl">{proj.name}</h2>
+                      <h2 className="text-[17.5px] font-bold cl">
+                        {proj.name}
+                      </h2>
                       <p className="text-gray-600 text-sm cl cursor-pointer">
                         {proj.duration}
                       </p>
@@ -191,7 +219,11 @@ export default function ProjectSection() {
                       animate={{ rotate: isExpanded ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      {isExpanded ? <FiChevronUp size={20} /> : <FiChevronDown size={20} />}
+                      {isExpanded ? (
+                        <FiChevronUp size={20} />
+                      ) : (
+                        <FiChevronDown size={20} />
+                      )}
                     </motion.div>
                   </div>
                 </div>
