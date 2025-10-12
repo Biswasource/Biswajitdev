@@ -156,7 +156,7 @@ export default function ProjectSection({ darkMode }) {
     <div
       className={`${
         darkMode ? "bg-black text-gray-200" : "bg-white text-gray-900"
-      } min-h-screen px-6 relative mt-3`}
+      } min-h-screen md:px-6 relative mt-3`}
     >
       <div
         className={`max-w-3xl w-full mx-auto mt-4 rounded-md ${

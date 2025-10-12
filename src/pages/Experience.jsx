@@ -58,7 +58,7 @@ export default function Experience({ darkMode }) {
 
   return (
     <div
-      className={`min-h-screen px-6 relative mt-2 ${
+      className={`min-h-screen  relative mt-2 ${
         darkMode ? "bg-black text-gray-200" : "bg-white text-gray-900"
       }`}
     >

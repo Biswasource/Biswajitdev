@@ -21,6 +21,7 @@ import ProjectSection from "../pages/ProjectSection";
 import EducationSection from "../pages/EducationSection";
 import { FaVolumeUp } from "react-icons/fa";
 import { Link } from "react-router";
+import { HiSun, HiMoon, HiMenu, HiX } from "react-icons/hi";
 
 export default function Profile() {
   const sentences = [
@@ -32,6 +33,7 @@ export default function Profile() {
   const [index, setIndex] = useState(0);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   // Load theme from localStorage
   useEffect(() => {
@@ -70,52 +72,112 @@ export default function Profile() {
       } min-h-screen font-mono`}
     >
       <header
-        className={`flex justify-center border-b ${
+        className={`flex flex-col sm:flex-row justify-center border-b ${
           darkMode ? "border-zinc-700" : "border-zinc-200"
-        } ${darkMode ? "bg-black" : "bg-white"}`}
+        } ${darkMode ? "bg-black" : "bg-white"} sticky top-0 z-50`}
       >
         <div className="flex items-center justify-between w-full max-w-3xl py-3 px-4 sm:py-4 sm:px-8">
-          <div className="flex items-center gap-4 sm:gap-10">
-            <span className="font-bold text-lg sm:text-xl tracking-tight sm:text-3xl">
-              BD
-            </span>
-          </div>
-
-          <nav
-            className={`flex items-center gap-2 sm:gap-6 text-xs sm:text-sm title ${
-              darkMode ? "text-white" : "text-zinc-600"
+          {/* Logo */}
+          <span
+            className={`font-bold text-lg sm:text-xl tracking-tight sm:text-3xl ${
+              darkMode ? "text-white" : "text-black"
             }`}
           >
-            <Link to="/blog" className="hover:text-gray-300">
+            BD
+          </span>
+
+          {/* Desktop Menu */}
+          <nav className="hidden sm:flex items-center gap-6 title">
+            <Link
+              to="/blog"
+              className={`hover:text-gray-400 ${
+                darkMode ? "text-white" : "text-zinc-600"
+              }`}
+            >
               Blog
             </Link>
-            <a href="#" className="hover:text-gray-300">
+            <a
+              href="#"
+              className={`hover:text-gray-400 ${
+                darkMode ? "text-white" : "text-zinc-600"
+              }`}
+            >
               Components
             </a>
-
-            <div className="flex items-center gap-2 sm:gap-3 rounded-xl">
-              <div className="relative rounded-2xl">
-                <FaSearch className="absolute left-1.5 top-1 text-sm sm:text-sm text-white" />
-                <input
-                  type="text"
-                  placeholder="Ctrl K"
-                  className="pl-5 pr-2 py-1 text-xs sm:text-xs border rounded-xl w-20 sm:w-24 text-center bg-zinc-800 text-white border-zinc-600"
-                />
-              </div>
-
-              <button className="p-1 border rounded-full hover:bg-zinc-700">
-                <FaGithub className="text-white text-lg sm:text-xl" />
-              </button>
-
-              <button
-                className="p-1.5 sm:p-2 border rounded-md hover:bg-zinc-700 text-sm sm:text-base"
-                onClick={() => setDarkMode(!darkMode)}
-              >
-                {darkMode ? "☀️" : "🌙"}
-              </button>
-            </div>
           </nav>
+
+          {/* Right side actions */}
+          <div className="flex items-center gap-2 sm:gap-4">
+            {/* Search */}
+            <div className="relative rounded-2xl">
+              <FaSearch className="absolute left-2 top-1.5 text-sm sm:text-sm text-white" />
+              <input
+                type="text"
+                placeholder="Ctrl K"
+                className="pl-7 pr-2 py-1 text-xs sm:text-sm border rounded-xl w-20 sm:w-24 text-center bg-zinc-800 text-white border-zinc-600"
+              />
+            </div>
+
+            {/* GitHub */}
+            <button className="p-1 border rounded-full border-gray-700 hover:bg-zinc-900">
+              <FaGithub className="text-white text-lg sm:text-xl" />
+            </button>
+
+            {/* Dark Mode */}
+            <button
+              className="p-1 sm:p-2 border rounded-full border-gray-700 hover:bg-zinc-900"
+              onClick={() => setDarkMode(!darkMode)}
+            >
+              {darkMode ? (
+                <HiSun className="text-white text-lg" />
+              ) : (
+                <HiMoon className="text-black text-lg" />
+              )}
+            </button>
+
+            {/* Hamburger for mobile */}
+            <button
+              className="sm:hidden p-1 border border-gray-700 rounded-full hover:bg-zinc-900 "
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              {menuOpen ? (
+                <HiX className="text-white text-lg" />
+              ) : (
+                <HiMenu className="text-white text-lg" />
+              )}
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <div
+            className={`sm:hidden fixed top-12 m-1 rounded-xl right-0 min-h flex flex-col  gap-2 text-left py-4 w-1/2 z-50 shadow-lg ${
+              darkMode
+                ? "bg-neutral-900 border border-zinc-900"
+                : "bg-white border border-zinc-200"
+            }`}
+          >
+            <Link
+              to="/blog"
+              className={`py-2 px-4 w-full text-left title hover:bg-zinc-700 rounded-md ${
+                darkMode ? "text-white" : "text-black"
+              }`}
+              onClick={() => setMenuOpen(false)}
+            >
+              Blog
+            </Link>
+            <a
+              href="#"
+              className={`py-2 px-4 w-full text-left title hover:bg-zinc-700 rounded-md ${
+                darkMode ? "text-white" : "text-black"
+              }`}
+              onClick={() => setMenuOpen(false)}
+            >
+              Components
+            </a>
+          </div>
+        )}
       </header>
 
       <BackgroundGrid darkMode={darkMode}>
