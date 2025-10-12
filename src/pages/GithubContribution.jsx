@@ -1,10 +1,16 @@
 import React from "react";
 import GitHubCalendar from "react-github-calendar";
 
-function GithubContribution() {
+function GithubContribution({ darkMode }) {
   return (
-    <div className="w-full flex flex-col items-center justify-center p-3 sm:p-6 md:p-8 relative scrollbar-hide title">
-      <div className="w-full max-w-full sm:max-w-3xl bg-white/90 rounded-xl p-2 sm:p-4 md:p-1 scrollbar-hide">
+    <div
+      className={`w-full flex flex-col items-center justify-center p-3 sm:p-6 md:p-3 relative scrollbar-hide title`}
+    >
+      <div
+        className={`w-full max-w-full sm:max-w-3xl rounded-xl p-2 sm:p-4 md:p-1 scrollbar-hide ${
+          darkMode ? "bg-black/90 text-white" : "bg-white/90 black"
+        }`}
+      >
         {/* Horizontal scroll with hidden scrollbar */}
         <div
           className="overflow-x-auto scrollbar-hide"
@@ -18,7 +24,7 @@ function GithubContribution() {
               username="Biswasource"
               blockSize={11}
               blockMargin={3}
-              colorScheme="dark"
+              colorScheme={darkMode ? "dark" : "light"}
             />
           </div>
         </div>

@@ -33,31 +33,42 @@ const logos = [
   { src: git, name: "Git" },
 ];
 
-function StackSection() {
+function StackSection({ darkMode }) {
   return (
     <section className="w-full flex flex-col items-center py-3 px-4 relative">
       <div className="w-full max-w-3xl">
-        <h2 className="text-3xl font-bold text-left text-black title">Stack</h2>
+        <h2
+          className={`text-3xl font-bold  text-left  ${
+            darkMode ? "text-white" : "text-black"
+          }`}
+        >
+          Stack
+        </h2>
       </div>
 
-      <div className="w-full max-w-3xl bg-white/70 backdrop-blur-sm rounded-xl p-3 mt-2">
+      <div
+        className={`w-full max-w-3xl rounded-xl p-3 mt-2 backdrop-blur-sm ${
+          darkMode ? "bg-black/70" : "bg-white/70"
+        }`}
+      >
         <div
           className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-8 gap-4"
           style={{ placeItems: "start" }}
         >
           {logos.map((logo, index) => (
-            <div key={index} className="relative group title">
+            <div key={index} className="relative group title text-white">
               <img
                 src={logo.src}
                 alt={logo.name}
-                className="w-9 h-9 object-contain hover:scale-110 transition-transform duration-200 cursor-pointer"
+                className="w-9 h-9 object-contain hover:scale-110 transition-transform duration-200 cursor-pointer text-white"
               />
               {/* Tooltip */}
               <div
-                className="absolute left-1/2 -top-8 transform -translate-x-1/2 
-                              bg-black text-white text-xs rounded px-5 py-2 
-                              opacity-0 group-hover:opacity-100 
-                              transition-opacity duration-200 pointer-events-none z-10"
+                className={`absolute left-1/2 -top-8 transform -translate-x-1/2 
+                  text-xs rounded px-5 py-2 opacity-0 group-hover:opacity-100 
+                  transition-opacity duration-200 pointer-events-none z-10 ${
+                    darkMode ? "bg-gray-800 text-white" : "bg-black text-white"
+                  }`}
               >
                 {logo.name}
               </div>

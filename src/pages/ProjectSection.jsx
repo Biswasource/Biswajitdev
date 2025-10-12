@@ -3,8 +3,8 @@ import { FaFolderOpen, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function ProjectSection() {
-  const [expandedIdxs, setExpandedIdxs] = useState([0, 1, 2, 3]); // initially expanded
+export default function ProjectSection({ darkMode }) {
+  const [expandedIdxs, setExpandedIdxs] = useState([0, 1, 2, 3]);
 
   const toggleAccordion = (idx) => {
     if (expandedIdxs.includes(idx)) {
@@ -13,7 +13,6 @@ export default function ProjectSection() {
       setExpandedIdxs([...expandedIdxs, idx]);
     }
   };
-
   const projects = [
     {
       name: "UIvault",
@@ -23,7 +22,6 @@ export default function ProjectSection() {
         "Developed a comprehensive React UI component library that supports multiple themes, including dark, light, and custom variations.",
         "Implemented a flexible theming system with JSX & TSX support, allowing developers to import components seamlessly in any project.",
         "Created a CLI tool to add and scaffold components dynamically, improving development efficiency.",
-
         "Documented the library with examples and usage guides, making onboarding simple for new developers.",
       ],
       tags: [
@@ -145,38 +143,54 @@ export default function ProjectSection() {
     },
   ];
 
-  // Variants for scroll animation
   const scrollVariant = {
     hidden: { opacity: 0, y: 10, filter: "blur(7px)" },
     visible: { opacity: 1, y: 0, filter: "blur(0px)" },
   };
-
   const listVariant = {
     hidden: { opacity: 0, x: -10 },
     visible: { opacity: 1, x: 0 },
   };
 
   return (
-    <div className="min-h-screen text-gray-900 px-6 relative mt-3">
-      <div className="max-w-3xl w-full mx-auto mt-4 bg-white">
-        <h1 className="text-3xl font-bold border-gray-300 mt-5 cl">Projects</h1>
+    <div
+      className={`${
+        darkMode ? "bg-black text-gray-200" : "bg-white text-gray-900"
+      } min-h-screen px-6 relative mt-3`}
+    >
+      <div
+        className={`max-w-3xl w-full mx-auto mt-4 rounded-md ${
+          darkMode ? "bg-black" : "bg-white"
+        } p-4`}
+      >
+        <h1
+          className={`text-3xl font-bold mb-5 ${
+            darkMode ? "text-gray-100" : "text-gray-900"
+          } cl`}
+        >
+          Projects
+        </h1>
 
         {projects.map((proj, idx) => {
           const isExpanded = expandedIdxs.includes(idx);
           return (
             <motion.div
               key={idx}
-              className="p-3 rounded-md text-gray-900 border-gray-400 transition-shadow border-b-1 duration-300 flex flex-col"
+              className={`p-3 rounded-md mb-3 transition-shadow duration-300 flex flex-col border-b md:py-4 ${
+                darkMode ? "border-gray-700" : "border-gray-300 "
+              }`}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
               variants={scrollVariant}
               transition={{ duration: 0.5, delay: idx * 0.2 }}
             >
-              {/* Header, duration, and toggle */}
+              {/* Header */}
               <div className="flex items-center gap-2 mt-2">
                 <div
-                  className="flex justify-between items-center w-full py-2 px-2 hover:bg-gray-100 rounded-md"
+                  className={`flex justify-between items-center w-full py-2 px-2 rounded-md cursor-pointer ${
+                    darkMode ? "hover:bg-gray-800" : "hover:bg-gray-100"
+                  }`}
                   onClick={() => toggleAccordion(idx)}
                 >
                   <div className="flex items-center gap-3">
@@ -186,17 +200,25 @@ export default function ProjectSection() {
                       alt={proj.name}
                     />
                     <div>
-                      <h2 className="text-[17.5px] font-bold cl">
+                      <h2
+                        className={`text-[17.5px] font-bold ${
+                          darkMode ? "text-gray-100" : "text-gray-900"
+                        } cl`}
+                      >
                         {proj.name}
                       </h2>
-                      <p className="text-gray-600 text-sm cl cursor-pointer">
+                      <p
+                        className={`text-sm title ${
+                          darkMode ? "text-gray-300" : "text-gray-600"
+                        }`}
+                      >
                         {proj.duration}
                       </p>
                     </div>
                   </div>
 
                   <div className="flex gap-4">
-                    <div className="flex items-center gap-2 justify-between">
+                    <div className="flex items-center gap-2">
                       {proj.links?.map((link, i) => (
                         <a
                           key={i}
@@ -205,7 +227,13 @@ export default function ProjectSection() {
                           rel="noopener noreferrer"
                           className="relative group text-xl"
                         >
-                          <span className="text-gray-600 hover:text-black transition-colors text-md">
+                          <span
+                            className={`${
+                              darkMode
+                                ? "text-gray-300 hover:text-gray-100"
+                                : "text-gray-600 hover:text-black"
+                            } transition-colors`}
+                          >
                             {link.icon}
                           </span>
                           <span className="absolute bottom-full mb-2 hidden group-hover:flex bg-black text-white text-xs px-2 py-1 rounded-md whitespace-nowrap shadow-lg">
@@ -241,7 +269,9 @@ export default function ProjectSection() {
                     className="overflow-hidden mt-4 ml-6"
                   >
                     <motion.ul
-                      className="space-y-2 text-gray-800 title text-sm"
+                      className={`space-y-2 text-sm title ${
+                        darkMode ? "text-gray-300" : "text-gray-800"
+                      }`}
                       initial="hidden"
                       animate="visible"
                       exit="hidden"
@@ -264,7 +294,11 @@ export default function ProjectSection() {
                       {proj.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300 text-sm title"
+                          className={`px-3 py-1 rounded-full border text-sm title ${
+                            darkMode
+                              ? "bg-gray-800 border-gray-700 text-gray-200"
+                              : "bg-gray-100 border-gray-300 text-gray-800"
+                          }`}
                         >
                           {tag}
                         </span>

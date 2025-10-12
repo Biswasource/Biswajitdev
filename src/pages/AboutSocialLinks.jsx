@@ -34,7 +34,7 @@ const socials = [
   },
 ];
 
-const AboutSocialLinks = () => {
+const AboutSocialLinks = ({ darkMode }) => {
   const blurVariant = {
     hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
     visible: (i) => ({
@@ -54,17 +54,23 @@ const AboutSocialLinks = () => {
     </>,
     <>
       With deep experience in the{" "}
-      <span className="font-semibold text-black">MERN stack</span>, I specialize
-      in building robust and elegant solutions using React, Node.js, Express,
-      and MongoDB. I’m also exploring TypeScript, Next.js, and Supabase to push
-      my development boundaries even further.
+      <span
+        className={`font-semibold ${darkMode ? "text-white" : "text-black"}`}
+      >
+        MERN stack
+      </span>
+      , I specialize in building robust and elegant solutions using React,
+      Node.js, Express, and MongoDB. I’m also exploring TypeScript, Next.js, and
+      Supabase to push my development boundaries even further.
     </>,
     <>
       I’ve built several end-to-end products — from real-time applications to
       complex management systems — including{" "}
       <a
         href="#"
-        className="text-black font-semibold underline underline-offset-3"
+        className={`font-semibold underline underline-offset-3 ${
+          darkMode ? "text-white" : "text-black"
+        }`}
       >
         Quexer Vendor Shipping Portal
       </a>
@@ -76,7 +82,9 @@ const AboutSocialLinks = () => {
       currently building{" "}
       <a
         href="#"
-        className="text-black font-semibold underline underline-offset-3"
+        className={`font-semibold underline underline-offset-3 ${
+          darkMode ? "text-white" : "text-black"
+        }`}
       >
         ui-vault
       </a>{" "}
@@ -87,14 +95,26 @@ const AboutSocialLinks = () => {
   ];
 
   return (
-    <div className="flex justify-center items-center px-4 sm:px-6 py-8 relative">
-      <div className="w-full max-w-3xl bg-white rounded-2xl p-2 sm:p-2 md:p-0">
+    <div
+      className={`flex justify-center items-center px-4 sm:px-6 py-8 relative`}
+    >
+      <div
+        className={`w-full max-w-3xl rounded-2xl p-2 sm:p-2 md:p-0 ${
+          darkMode ? "bg-black" : "bg-white"
+        }`}
+      >
         {/* Social Links Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x rounded-xl overflow-hidden cl cursor-pointer">
+        <div
+          className={`grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x rounded-xl overflow-hidden cursor-pointer cl`}
+        >
           {socials.map((s, i) => (
             <motion.div
               key={i}
-              className="flex items-center gap-4 p-4 sm:p-6 hover:bg-gray-50 transition"
+              className={`flex items-center gap-4 p-4 sm:p-6 transition cl ${
+                darkMode
+                  ? "hover:bg-zinc-900 bg-black text-white"
+                  : "hover:bg-gray-50 bg-white text-black"
+              }`}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
@@ -107,8 +127,8 @@ const AboutSocialLinks = () => {
                 className="w-10 h-10 object-contain"
               />
               <div>
-                <p className="font-semibold text-black">{s.name}</p>
-                <p className="text-black text-sm">{s.user}</p>
+                <p className="font-semibold">{s.name}</p>
+                <p className="text-sm">{s.user}</p>
               </div>
               <div className="ml-auto text-gray-400 text-lg">↗</div>
             </motion.div>
@@ -116,9 +136,11 @@ const AboutSocialLinks = () => {
         </div>
 
         {/* About Section */}
-        <div className="mt-10 title">
+        <div className="mt-10">
           <motion.h2
-            className="text-2xl sm:text-3xl font-bold mb-4 text-black"
+            className={`text-2xl sm:text-3xl font-bold mb-4 ${
+              darkMode ? "text-white" : "text-black"
+            }`}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.3 }}
@@ -131,9 +153,14 @@ const AboutSocialLinks = () => {
           {paragraphs.map((para, i) => (
             <motion.p
               key={i}
-              className={`leading-relaxed mb-4 text-sm sm:text-sm ${
-                i === 0 ? "text-black" : "text-gray-900"
+              className={`leading-relaxed mb-4 text-sm sm:text-sm title ${
+                darkMode
+                  ? "text-gray-200"
+                  : i === 0
+                  ? "text-black"
+                  : "text-gray-900"
               }`}
+              style={{ color: darkMode ? "#e5e7eb" : undefined }} // optional override
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}

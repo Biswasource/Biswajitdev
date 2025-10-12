@@ -3,7 +3,7 @@ import { FaCode } from "react-icons/fa";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function Experience() {
+export default function Experience({ darkMode }) {
   const [expandedIdxs, setExpandedIdxs] = useState([0, 1]); // expanded by default
 
   const toggleAccordion = (idx) => {
@@ -23,7 +23,6 @@ export default function Experience() {
       description: [
         "Worked on a Salon SaaS platform providing complete management solutions.",
         "Developed scalable RESTful APIs using Node.js and Express for salon operations.",
-        "Containerized applications using Docker for easy deployment.",
         "Implemented CI/CD pipelines with Jenkins for automated builds and deployments.",
         "Managed databases including MongoDB and PostgreSQL, ensuring data integrity.",
         "Optimized server performance and ensured high availability for production applications.",
@@ -58,9 +57,21 @@ export default function Experience() {
   };
 
   return (
-    <div className="min-h-screen text-gray-900 px-6 relative mt-2">
-      <div className="max-w-3xl w-full mx-auto bg-white">
-        <h1 className="text-3xl font-bold border-gray-300 pb-4 mt-3">
+    <div
+      className={`min-h-screen px-6 relative mt-2 ${
+        darkMode ? "bg-black text-gray-200" : "bg-white text-gray-900"
+      }`}
+    >
+      <div
+        className={`max-w-3xl w-full mx-auto rounded-md ${
+          darkMode ? "bg-black text-white" : "bg-white text-black"
+        } p-4`}
+      >
+        <h1
+          className={`text-3xl font-bold border-b pb-4 mb-4 cl ${
+            darkMode ? "border-gray-700" : "border-gray-300"
+          }`}
+        >
           Experience
         </h1>
 
@@ -69,7 +80,9 @@ export default function Experience() {
           return (
             <motion.div
               key={idx}
-              className="p-3 rounded-md text-gray-900 mb-3 border-gray-400 transition-shadow border-b-1 duration-300"
+              className={`p-3 rounded-md mb-3 border-b transition-shadow duration-300 ${
+                darkMode ? "border-gray-700 " : "border-gray-300"
+              }`}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
@@ -78,34 +91,50 @@ export default function Experience() {
             >
               {/* Header */}
               <div className="flex items-center justify-between cursor-pointer">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 cl">
                   <img
                     src={exp.logo}
                     className="h-8 w-8 rounded-full mt-1"
                     alt={exp.company}
                   />
-                  <h2 className="text-[17.5px] font-bold cl">{exp.company}</h2>
+                  <h2 className="text-[17.5px] font-bold cl">
+                    {exp.company}
+                  </h2>
                 </div>
               </div>
 
               {/* Role & Duration */}
               <div className="flex items-center gap-2 mt-2">
-                <div className="relative flex items-center justify-center w-8 h-8 rounded-xl bg-zinc-50 border-[4px] border-white shadow-[inset_0_0_0_1px_#e5e5e5]">
-                  <div className="absolute inset-0.5 rounded-md border border-zinc-200" />
-                  <FaCode className="text-gray-500" />
+                <div
+                  className={`relative flex items-center justify-center w-8 h-8 rounded-xl shadow-[inset_0_0_0_1px_#e5e5e5] ${
+                    darkMode
+                      ? "bg-gray-800 border-gray-700"
+                      : "bg-zinc-50 border-white"
+                  }`}
+                >
+                  <div
+                    className={`absolute inset-0.5 rounded-md border ${
+                      darkMode ? "border-gray-600" : "border-zinc-200"
+                    }`}
+                  />
+                  <FaCode
+                    className={`${
+                      darkMode ? "text-gray-200" : "text-gray-500"
+                    }`}
+                  />
                 </div>
 
                 <div
-                  className="flex justify-between items-center w-full py-2 px-2 hover:bg-gray-100 rounded-md"
+                  className={`flex justify-between items-center w-full py-2 px-2 rounded-md cursor-pointer ${
+                    darkMode ? "hover:bg-gray-800" : "hover:bg-gray-100"
+                  }`}
                   onClick={() => toggleAccordion(idx)}
                 >
                   <div>
-                    <h3 className="text-base font-semibold mt-2 cl cursor-pointer">
+                    <h3 className="text-base font-semibold mt-2 cl">
                       {exp.role}
                     </h3>
-                    <p className="text-gray-600 text-sm cl cursor-pointer">
-                      {exp.duration}
-                    </p>
+                    <p className="text-sm title">{exp.duration}</p>
                   </div>
                   {/* Expand/Collapse Icon */}
                   <motion.div
@@ -133,7 +162,7 @@ export default function Experience() {
                     className="overflow-hidden mt-4 ml-6"
                   >
                     <motion.ul
-                      className="space-y-2 text-gray-800 title text-sm"
+                      className="space-y-2 text-sm title"
                       initial="hidden"
                       animate="visible"
                       exit="hidden"
@@ -171,7 +200,11 @@ export default function Experience() {
                       ].map((tag) => (
                         <span
                           key={tag}
-                          className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300 text-sm title"
+                          className={`px-3 py-1 rounded-full border text-sm title ${
+                            darkMode
+                              ? "bg-gray-800 border-gray-700 text-gray-200"
+                              : "bg-gray-100 border-gray-300 text-gray-800"
+                          }`}
                         >
                           {tag}
                         </span>
