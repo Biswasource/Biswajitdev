@@ -79,7 +79,7 @@ export default function Profile() {
         <div className="flex items-center justify-between w-full max-w-3xl py-3 px-4 sm:py-4 sm:px-8">
           {/* Logo */}
           <span
-            className={`font-bold text-lg sm:text-xl tracking-tight sm:text-3xl ${
+            className={`font-bold text-2xl tracking-tight sm:text-3xl  ${
               darkMode ? "text-white" : "text-black"
             }`}
           >
@@ -87,65 +87,95 @@ export default function Profile() {
           </span>
 
           {/* Desktop Menu */}
-          <nav className="hidden sm:flex items-center gap-6 title">
-            <Link
-              to="/blog"
-              className={`hover:text-gray-400 ${
-                darkMode ? "text-white" : "text-zinc-600"
-              }`}
-            >
-              Blog
-            </Link>
-            <a
-              href="#"
-              className={`hover:text-gray-400 ${
-                darkMode ? "text-white" : "text-zinc-600"
-              }`}
-            >
-              Components
-            </a>
-          </nav>
 
           {/* Right side actions */}
           <div className="flex items-center gap-2 sm:gap-4">
             {/* Search */}
-            <div className="relative rounded-2xl">
-              <FaSearch className="absolute left-2 top-1.5 text-sm sm:text-sm text-white" />
-              <input
-                type="text"
-                placeholder="Ctrl K"
-                className="pl-7 pr-2 py-1 text-xs sm:text-sm border rounded-xl w-20 sm:w-24 text-center bg-zinc-800 text-white border-zinc-600"
-              />
-            </div>
+
+            <nav className="hidden sm:flex items-center gap-6 title">
+              <Link
+                to="/blog"
+                className={`hover:text-gray-400 ${
+                  darkMode ? "text-white" : "text-zinc-600"
+                }`}
+              >
+                Blog
+              </Link>
+              <a
+                href="#"
+                className={`hover:text-gray-400 ${
+                  darkMode ? "text-white" : "text-zinc-600"
+                }`}
+              >
+                Components
+              </a>
+            </nav>
+            {darkMode ? (
+              <div className="relative flex items-center bg-zinc-800 border border-zinc-600 rounded-xl px-2">
+                <FaSearch className="absolute left-2 text-zinc-400 text-sm" />
+                <input
+                  type="text"
+                  placeholder="Ctrl K"
+                  className="pl-7 pr-2 py-1 text-xs sm:text-sm w-24 sm:w-28 bg-zinc-800 text-white placeholder-zinc-500 focus:outline-none rounded-xl title "
+                />
+              </div>
+            ) : (
+              <div className="relative flex items-center bg-gray-50 border border-zinc-600 rounded-xl px-2">
+                <FaSearch className="absolute left-2 text-zinc-400 text-sm" />
+                <input
+                  type="text"
+                  placeholder="Ctrl K"
+                  className="pl-7 pr-2 py-1 text-xs sm:text-sm w-24 sm:w-28 bg-gray-50 text-black placeholder-zinc-500 focus:outline-none rounded-xl title "
+                />
+              </div>
+            )}
 
             {/* GitHub */}
-            <button className="p-1 border rounded-full border-gray-700 hover:bg-zinc-900">
-              <FaGithub className="text-white text-lg sm:text-xl" />
+            <button className="p-1 border rounded-full border-gray-700 cursor-pointer">
+              {darkMode ? (
+                <FaGithub className="text-white text-lg sm:text-xl " />
+              ) : (
+                <FaGithub className="text-black text-lg sm:text-xl " />
+              )}
             </button>
 
             {/* Dark Mode */}
             <button
-              className="p-1 sm:p-2 border rounded-full border-gray-700 hover:bg-zinc-900"
+              className="p-1 border rounded-full border-gray-700 cursor-pointer"
               onClick={() => setDarkMode(!darkMode)}
             >
               {darkMode ? (
-                <HiSun className="text-white text-lg" />
+                <HiSun className="text-white text-xl" />
               ) : (
-                <HiMoon className="text-black text-lg" />
+                <HiMoon className="text-black text-xl" />
               )}
             </button>
 
             {/* Hamburger for mobile */}
-            <button
-              className="sm:hidden p-1 border border-gray-700 rounded-full hover:bg-zinc-900 "
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              {menuOpen ? (
-                <HiX className="text-white text-lg" />
-              ) : (
-                <HiMenu className="text-white text-lg" />
-              )}
-            </button>
+
+            {darkMode ? (
+              <button
+                className="sm:hidden p-1 border border-gray-700 rounded-full hover:bg-zinc-900 "
+                onClick={() => setMenuOpen(!menuOpen)}
+              >
+                {menuOpen ? (
+                  <HiX className="text-white text-lg" />
+                ) : (
+                  <HiMenu className="text-white text-lg" />
+                )}
+              </button>
+            ) : (
+              <button
+                className="sm:hidden p-1 border border-gray-700 rounded-full cursor-pointer"
+                onClick={() => setMenuOpen(!menuOpen)}
+              >
+                {menuOpen ? (
+                  <HiX className="text-black text-lg" />
+                ) : (
+                  <HiMenu className="text-black text-lg" />
+                )}
+              </button>
+            )}
           </div>
         </div>
 

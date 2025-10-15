@@ -15,22 +15,12 @@ const socials = [
   {
     name: "X (Formerly Twitter)",
     user: "@iamncdai",
-    img: "https://upload.wikimedia.org/wikipedia/commons/9/95/X_logo_2023.svg",
-  },
-  {
-    name: "daily.dev",
-    user: "@ncdai",
-    img: "https://daily.dev/favicon-96x96.png",
+    img: "./x.jpg",
   },
   {
     name: "Discord",
     user: "Quaric",
-    img: "https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg",
-  },
-  {
-    name: "YouTube",
-    user: "@ncdai",
-    img: "https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_2024.svg",
+    img: "./discord.svg",
   },
 ];
 
@@ -72,10 +62,11 @@ const AboutSocialLinks = ({ darkMode }) => {
           darkMode ? "text-white" : "text-black"
         }`}
       >
-        Quexer Vendor Shipping Portal
+        LearnX LMS
       </a>
-      , a full-featured platform integrated with WooCommerce, Delhivery One API,
-      and Razorpay to streamline vendor shipping and payment workflows.
+      , a full-featured Learning Management System designed for educational
+      institutions to manage courses, track student progress, automate
+      attendance, and provide real-time analytics for teachers and admins.
     </>,
     <>
       I’m also passionate about open-source development and UI engineering,
@@ -89,14 +80,30 @@ const AboutSocialLinks = ({ darkMode }) => {
         ui-vault
       </a>{" "}
       — a CLI for developers to quickly add themed React components with
-      IntelliSense support. Beyond coding, I love exploring creative UI
-      animations and enhancing UX accessibility.
+      IntelliSense support. I’ve also published{" "}
+      <a
+        href="#"
+        className={`font-semibold underline underline-offset-3 ${
+          darkMode ? "text-white" : "text-black"
+        }`}
+      >
+        mvcset
+      </a>
+      , an npm package that simplifies scalable MVC architecture setup for
+      Node.js projects.
+    </>,
+    <>
+      Let’s{" "}
+      
+        connect and collaborate !
+   
+
     </>,
   ];
 
   return (
     <div
-      className={`flex justify-center items-center px-4 sm:px-6 py-8 relative`}
+      className={`flex justify-center items-center px-4 sm:px-6 py-2 relative`}
     >
       <div
         className={`w-full max-w-3xl rounded-2xl p-2 sm:p-2 md:p-0 ${

@@ -156,15 +156,15 @@ export default function ProjectSection({ darkMode }) {
     <div
       className={`${
         darkMode ? "bg-black text-gray-200" : "bg-white text-gray-900"
-      } min-h-screen md:px-6 relative mt-3`}
+      } min-h-screen md:px-6 relative`}
     >
       <div
-        className={`max-w-3xl w-full mx-auto mt-4 rounded-md ${
+        className={`max-w-3xl w-full mx-auto rounded-md ${
           darkMode ? "bg-black" : "bg-white"
         } p-4`}
       >
         <h1
-          className={`text-3xl font-bold mb-5 ${
+          className={`text-3xl font-bold  ${
             darkMode ? "text-gray-100" : "text-gray-900"
           } cl`}
         >
@@ -176,7 +176,7 @@ export default function ProjectSection({ darkMode }) {
           return (
             <motion.div
               key={idx}
-              className={`p-3 rounded-md mb-3 transition-shadow duration-300 flex flex-col border-b md:py-4 ${
+              className={`p-3 rounded-md transition-shadow duration-300 flex flex-col border-b md:py-4 ${
                 darkMode ? "border-gray-700" : "border-gray-300 "
               }`}
               initial="hidden"
@@ -290,11 +290,11 @@ export default function ProjectSection({ darkMode }) {
                       ))}
                     </motion.ul>
 
-                    <div className="flex flex-wrap gap-2 mt-6 text-sm">
+                    <div className="flex flex-wrap gap-2 mt-6 text-xs">
                       {proj.tags.map((tag) => (
                         <span
                           key={tag}
-                          className={`px-3 py-1 rounded-full border text-sm title ${
+                          className={`px-3 py-1 rounded-full border text-xs md:text-sm title ${
                             darkMode
                               ? "bg-gray-800 border-gray-700 text-gray-200"
                               : "bg-gray-100 border-gray-300 text-gray-800"

@@ -159,7 +159,7 @@ export default function Experience({ darkMode }) {
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="overflow-hidden mt-4 ml-6"
+                    className="overflow-hidden mt-4 md:ml-6 ml-2"
                   >
                     <motion.ul
                       className="space-y-2 text-sm title"
@@ -185,7 +185,7 @@ export default function Experience({ darkMode }) {
                       ))}
                     </motion.ul>
 
-                    <div className="flex flex-wrap gap-2 mt-6 text-sm">
+                    <div className="flex flex-wrap gap-2 mt-6 text-xs">
                       {[
                         "React.js",
                         "Next.js",
@@ -200,7 +200,7 @@ export default function Experience({ darkMode }) {
                       ].map((tag) => (
                         <span
                           key={tag}
-                          className={`px-3 py-1 rounded-full border text-sm title ${
+                          className={`px-3 py-1 rounded-full border text-xs md:text-sm title ${
                             darkMode
                               ? "bg-gray-800 border-gray-700 text-gray-200"
                               : "bg-gray-100 border-gray-300 text-gray-800"
